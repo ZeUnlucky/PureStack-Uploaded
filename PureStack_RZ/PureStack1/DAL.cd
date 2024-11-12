@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="PureStack.Classes.Answer">
+    <Position X="2" Y="0.75" Width="3" />
+    <Members>
+      <Field Name="m_answerid" Hidden="true" />
+      <Field Name="m_contents" Hidden="true" />
+      <Field Name="m_date" Hidden="true" />
+      <Field Name="m_question" Hidden="true" />
+      <Field Name="m_userID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAAAAIAAAAAAAAAAAIAAAAgAEAAAQAgBEAQAgABIAAA=</HashCode>
+      <FileName>Classes\Answer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_user" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PureStack.Classes.User">
+    <Position X="11.25" Y="0.75" Width="2.25" />
+    <Members>
+      <Field Name="DEFAULT_PICTURE" Hidden="true" />
+      <Field Name="m_admin" Hidden="true" />
+      <Field Name="m_email" Hidden="true" />
+      <Field Name="m_password" Hidden="true" />
+      <Field Name="m_picture" Hidden="true" />
+      <Field Name="m_userID" Hidden="true" />
+      <Field Name="m_username" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABgIAAACAACAoAAQgABQgAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Classes\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PureStack.Classes.Question">
+    <Position X="6.5" Y="0.75" Width="3" />
+    <Members>
+      <Field Name="m_contents" Hidden="true" />
+      <Field Name="m_date" Hidden="true" />
+      <Field Name="m_header" Hidden="true" />
+      <Field Name="m_numAnswers" Hidden="true" />
+      <Field Name="m_questionID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAABAAAEABAAAEBAAIAAAAAIAAAQCAgBQAQAgABAAAA=</HashCode>
+      <FileName>Classes\Question.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_user" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="m_answers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="PureStack.Classes.UserStats">
+    <Position X="13.25" Y="4.25" Width="2" />
+    <Members>
+      <Field Name="_numAnswers" Hidden="true" />
+      <Field Name="_numQuestions" Hidden="true" />
+      <Field Name="_numVotes" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QBABAAAAABAAAAAEIAAAAAAAAAAACIAAAAAAAAAAAIA=</HashCode>
+      <FileName>Classes\UserStats.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_user" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PureStack.Classes.VotesSQL">
+    <Position X="0.5" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAgAgAAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Classes\VotesSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PureStack.Classes.QuestionSQL">
+    <Position X="4" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAABAAAgIAAAAAABAAAAAAAAABAACAAAAAAAAA=</HashCode>
+      <FileName>Classes\QuestionSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PureStack.Classes.SharedSQL" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\SharedSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PureStack.Classes.AnswerSQL">
+    <Position X="8.25" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\AnswerSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

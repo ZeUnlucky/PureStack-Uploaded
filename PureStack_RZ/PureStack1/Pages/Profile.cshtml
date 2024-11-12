@@ -1,0 +1,90 @@
+﻿@page
+@model PureStack1.Pages.ProfileModel
+@using PureStack.Classes;
+@{
+    User user = Model.GetUser();
+    List<Question> userLatestQuestions = Model.GetLatestPosts();
+    UserStats stats = Model.GetStats();
+}
+
+@section Stylesheets
+{
+    <link href="~/css/Profile.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('statsChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Questions", "Answers", "Votes"],
+                datasets: [{
+                    label: 'Stats',
+                    backgroundColor: ['rgb(150, 150, 255)', 'rgb(0,150,150)', 'rgb(200,150,100)'],
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [@stats.NumQuestions,@stats.NumAnswers,@stats.NumVotes]
+              }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    text: 'Leaderboard'
+                },
+                scales: {
+
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            beginAtZero: true,
+                            precision:0
+                        }
+                    }]
+                }
+            }
+        });
+        Chart.defaults.global.defaultFontColor = 'rgb(225,225,225)';
+    </script>
+}
+<div id="mainDiv">
+    <div id="topContainer">
+        <div id="pfpContainer">
+            <img id="pfp" src="@user.GetPicturePath()"/>
+        </div>
+        <div id="userDetailsContainer">
+            <p>@user.Username</p>
+        </div>
+        <div id="scoreContainer">
+            <p>@user.Score Swag</p>
+        </div>
+    </div>
+    <div id="bottomContainer">
+        <div id="userLatestContainer">
+            <h2 id="TableTitle">Latest Posts</h2>
+            <table id="LatestQuestionsTable">
+                <tr>
+                    <th class="CenterText">Question</th>
+                    <th class="CenterText">Posted</th>
+                    <th class="CenterText">Swag</th>
+                </tr>
+                @foreach (Question q in userLatestQuestions)
+                {
+                    <tr>
+                        <td><a href="ViewQuestion?qid=@q.QuestionID">@q.Header</a></td>
+                        <td class="CenterText">@q.Date.ToString("dd MMMM yy HH:mm")</td>
+                        <td class="CenterText">@q.GetScore()</td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+        <div id="statsContainer">
+            <canvas id="statsChart"></canvas>
+        </div>
+    </div>
+</div>

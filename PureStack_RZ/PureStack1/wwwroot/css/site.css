@@ -1,0 +1,109 @@
+﻿body{
+    background-color:rgb(25,25,25);
+    color:rgb(225,225,225);
+}
+
+.Dark {
+    background-color: rgb(25,25,25);
+    color: rgb(225,225,225);
+}
+
+.container {
+    max-width: none;
+}
+.Headbar {
+    width: 100%;
+    top: 0;
+    background-color: rgb(50,50,50);
+    color: rgb(175,175,175);
+    margin-bottom: 1%;
+    margin-top: 0.5%;
+    padding: 0.5%;
+    flex-direction: row-reverse;
+    border-radius: 16px;
+}
+
+.HeaderButton {
+    width: 15%;
+    text-decoration: none;
+    padding: 4px 12px 4px 12px;
+    background-color: rgb(175,175,175);
+    border-radius: 16px;
+    margin: 5px;
+    text-align: center;
+}
+    .HeaderButton:hover {
+        background-color: rgb(75,75,75);
+    }
+
+    .HeaderButton:visited {
+        color: rgb(50,50,50);
+    }
+
+.Home {
+    float: left;
+    margin-top:5px;
+    margin-left:7px;
+    font-size:20px;
+    color: darkcyan;  
+/*    align-self: center; */
+}
+
+.AccountButton {
+    float: right;
+}
+
+.LogOut{
+    width:75px;
+    font-size:12px;
+}
+.AddQuestion {
+    float:left;
+    margin-left:20px;
+    background-color:deepskyblue;
+}
+.AddQuestion:hover{
+    background-color:cadetblue;
+}
+.ProfileLink {
+    float: right;
+    margin: 5px;
+}
+
+.User {
+    font-size: 125%;
+    float: right;
+    text-align: center;
+}
+
+.input_div {
+    background-color: rgb(100,100,100);
+    width: 100%;
+    text-align: center;
+    margin: 1%;
+}
+
+.input_header {
+    text-align: left;
+}
+
+.InlineButton {
+    background-color: rgb(100,100,100);
+    border: 0;
+    border-radius: 16px;
+    margin-left: 7px;
+    margin-top: 15px;
+    width: 200px;
+    height: 25px;
+    padding: 0px 6px 8px 10px;
+    background-color: deepskyblue;
+    color: black;
+}
+
+    .InlineButton:hover {
+        background-color: cadetblue;
+    }
+
+.form-label {
+    width: 100%;
+}

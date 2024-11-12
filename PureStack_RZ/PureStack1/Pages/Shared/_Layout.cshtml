@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PureStack</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("Stylesheets", required:false)
+</head>
+@using Microsoft.AspNetCore.Http
+
+@{
+     string user = Context.Session.GetString("User");
+    int? uid = Context.Session.GetInt32("UserId");
+}
+
+<body >
+    <header>
+        <nav class="Dark navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <div id="Header" class="Headbar">
+                    <img src="~/Images/Logo.png" height="32" style="float:left; margin-top:5px">
+                    <a class="Home" href="Index">PureStack</a>
+                    @if (user != null)
+                    {
+                        <a class="AccountButton HeaderButton LogOut" href="Actions?handler=LogOut">Log Out</a>
+                        <a class="ProfileLink" href="Profile?uid=@uid">@user</a>
+                        <a class="HeaderButton AddQuestion" href="AddQuestion">Add a question</a>
+                    }
+                    else
+                    {
+                        <a class="AccountButton HeaderButton" href="SignUp">Sign Up</a>
+                        <a class="AccountButton HeaderButton" href="Login">Log In</a>
+                    }
+                </div>
+
+                @*<a class="navbar-brand" asp-area="" asp-page="/Index">PureStack1</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>*@
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - PureStack1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

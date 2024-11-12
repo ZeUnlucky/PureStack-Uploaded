@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+@section Stylesheets
+{
+    <link href="~/css/Index.css" rel="stylesheet" />
+}
+
+<div>
+    <div id="mainDiv">
+        <h1 style="text-align:center">Welcome to PureStack!</h1>
+        <h4 id="Subtitle">Find the answers to the most challenging questions while also helping others to answer theirs. Join our community and collaborate freely</h4>
+        <div id="Button_div" class="ButtonContainer">
+            <a id="ShowQuestions_btn" class="HeaderButton" href="ShowQuestions">I want to see these questions</a>
+        </div>
+        
+        <div id="detailsDiv">
+            <div id="addQuestionDiv" class="BoxDiv">
+                @if (Model.isLoggedIn())
+                {
+                    <p>Asking a question is super-easy, and you may get an answer from our community in a matter of minutes</p>
+                    <div class="ButtonContainer">
+                        <a id="AddQuestion_btn" class="InlineButton" href="AddQuestion">Ask a question</a>
+                    </div>
+                }
+                else
+                {
+                    <p id="not_auth_to_add">You should login or sign up for free to start voting, ask question or answers others</p>
+                    <div class="ButtonContainer">
+                        <a class="InlineButton" href="SignUp">Sign up</a>
+                        <a class="InlineButton" href="Login">Log in</a>
+                    </div>
+                }
+            </div>
+            <div id="leaderboardDiv" class="BoxDiv">
+                <p>Get to know our top contributors or view useful statisics about the forum - visit our statistics page</p>
+                <div class="ButtonContainer">
+                    <a class="LeaderBoard InlineButton" href="Stats">View Leaderboard</a>
+                </div>
+            </div>
+        </div>
+        <div id="Logo_div" width="100%">
+            <img src="~/Images/Forum.jpg" />
+        </div>
+    </div>
+</div>

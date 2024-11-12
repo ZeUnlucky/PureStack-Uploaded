@@ -1,0 +1,42 @@
+﻿@page
+@model PureStack1.Pages.SignUpModel
+@{
+}
+
+@section Stylesheets
+{
+    <link href="~/css/SignUp.css" rel="stylesheet" />
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div id="image_div">
+            <img id="login_img" src="~/Images/Login.svg" />
+        </div>
+
+        <div id="mainDiv">
+            <h1 id="welcome_h1">Welcome to PureStack!</h1>
+            <div id="username_div" class="input_div">
+                <label asp-for="UserName" class="form-label">User name</label>
+                <input asp-for="UserName" maxlength="45" class="input_txt" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div id="email_div" class="input_div">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" maxlength="45" class="input_txt" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div id="password_div" class="input_div">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" maxlength="45" class="input_txt" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div id="pfp_div" class="input_div">
+                <input type="file" asp-for="PFP" id="PicButton"/>
+            </div>
+            <input type="submit" value="Sign up" class="InlineButton"  />
+        </div>
+    </div>
+</form>

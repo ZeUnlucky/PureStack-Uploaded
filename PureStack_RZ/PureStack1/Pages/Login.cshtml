@@ -1,0 +1,32 @@
+﻿@page
+@model PureStack1.Pages.LoginModel
+@{
+}
+
+@section Stylesheets
+{
+    <link href="~/css/Login.css" rel="stylesheet" />
+}
+
+<form method="post">
+    <div class="container">
+        <div id="image_div">
+            <img id="login_img" src="~/Images/Login.svg" />
+        </div>
+        <div id="mainDiv">
+            <h1 id="welcome_h1">Welcome to PureStack!</h1>
+            <!--<div asp-validation-summary="All" class="text-danger"></div>-->
+            <div id="username_div" class="input_div">
+                <label asp-for="UserName" class="form-label">User Name</label>
+                <input asp-for="UserName" maxlength="45" class="input_txt" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div id="password_div" class="input_div">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" maxlength="45" class="input_txt" />
+            </div>
+            <input type="submit" class="InlineButton" value="Log in" />
+        </div>
+    </div>
+</form>

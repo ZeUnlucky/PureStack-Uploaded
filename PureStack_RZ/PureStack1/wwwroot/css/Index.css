@@ -1,0 +1,93 @@
+﻿p {
+    padding: 10px;
+}
+
+#Subtitle {
+    text-align: center;
+    font-size: 16px;
+}
+
+#Button_div {
+    display: flex;
+    justify-content: center;
+}
+
+#ShowQuestions_btn {
+    width: 250px;
+    background-color: greenyellow;
+    margin-top: 20px;
+}
+
+    #ShowQuestions_btn:hover {
+        background-color: darkseagreen;
+    }
+
+#Login_div {
+    margin-top: 20px;
+    display:flex;
+    flex-direction:row;
+}
+
+.TextDiv {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+#detailsDiv {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    justify-content: space-around;
+}
+
+.BoxDiv {
+    border: 1px solid darkgrey;
+    width: 28%;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+#Logo_div {
+    display: flex;
+    justify-content: center;
+}
+
+.InlineButton {
+    background-color: rgb(100,100,100);
+    border: 0;
+    border-radius: 16px;
+    margin-left: 7px;
+    width:  75px;
+    height: 25px;
+    padding: 0px 6px 8px 10px;
+    background-color: deepskyblue;
+    color: black;
+}
+
+.InlineButton:hover {
+    background-color: cadetblue;
+}
+
+#AddQuestion_btn {
+    width: 130px;
+}
+
+
+.LeaderBoard {
+    background-color:gold;
+    width: 150px;
+}
+
+.LeaderBoard:hover {
+    background-color: darkgoldenrod;
+}

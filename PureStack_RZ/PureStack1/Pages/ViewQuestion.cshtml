@@ -1,0 +1,127 @@
+﻿@page
+@model PureStack1.Pages.ViewQuestionModel
+@{
+
+}
+
+@section Stylesheets
+{
+    <link href="~/css/QuestionPage.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function VoteQuestion(qid, isGood) {
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "Actions?handler=VoteQuestion&qid=" + qid + "&isGood=" + isGood, false);
+                xhr.send();
+                var votes = xhr.responseText;
+                if (votes == null) {
+                    window.location = "Index";
+                    return false;
+                }
+                var scoreBox = document.getElementById("QuestionScore");
+                scoreBox.innerText = votes + " swag";
+            }
+            catch (e) {
+                alert(e);
+            }
+        }
+        function VoteAnswer(aid, isGood) {
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "Actions?handler=VoteAnswer&aid=" + aid + "&isGood=" + isGood, false);
+                xhr.send();
+                var votes = xhr.responseText;
+                if (votes == null) {
+                    window.location = "Index";
+                    return false;
+                }
+                var scoreBox = document.getElementById("ScoreBox_" + aid);
+                scoreBox.innerText = votes + " swag";
+            }
+            catch (e) {
+                alert(e);
+            }
+        }
+    </script>
+}
+<form method="post">
+    <div id="QuestionFrame">
+        <div class="UserDiv">
+            <img id="pfp" class="pfp" src="@Model.GetQuestion().User.GetPicturePath()" />
+            <a id="username" class="nameP" href="Profile?uid=@Model.GetQuestion().User.UserID">@Model.GetQuestion().User.Username</a>
+            <p id="scoreP" class="scoreP2">@Model.GetQuestion().User.Score swag</p>
+        </div>
+
+        <div id="ContentBlock">
+            <div id="HeadBlock">
+                <h1 id="QuestionHead">@Model.GetQuestion().Header</h1>
+            </div>
+            <div id="QuestionBlock">
+                <p id="questionbody">@Model.GetQuestion().Contents</p>
+            </div>
+        </div>
+        <div id="ActionsBlock">
+            <div id="VoteBlock">
+                @if (Model.isLoggedIn())
+                {
+                    <input type="image" class="VoteButton" id="upvote_button" src="~/Images/upvote.png" onclick="VoteQuestion(@Model.QuestionID, 1); return false;" />
+                }
+                <p id="QuestionScore">@Model.GetQuestion().GetScore() swag</p>
+                @if (Model.isLoggedIn())
+                {
+                    <input type="image" class="VoteButton" id="downvote_button" src="~/Images/downvote.png" onclick="VoteQuestion(@Model.QuestionID, 0); return false;" />
+                }
+            </div>
+            @if (Model.CanUserDelete())
+            {
+                <div id="DeleteBlock">
+                    <input type="image" src="~/Images/deleteicon.jpg" title="Delete question" id="deleteButton" class="DeleteButton" asp-page-handler="delete" asp-route-id="@Model.QuestionID" />
+                </div>
+            }
+        </div>
+
+    </div>
+    <div id="AnswersFrame">
+        @foreach (var ans in Model.GetQuestion().Answers)
+        {
+            PureStack.Classes.User user = ans.GetUser();
+            <div id="BigAnswer">
+                <div id="AnswerUserDiv" class="UserDiv">
+                    <img class="pfp" src="@user.GetPicturePath()">
+                    <a class="nameP" href="Profile?uid=@ans.UserID">@user.Username</a>
+                    <p class="scoreP2">@user.Score</p>
+                </div>
+                <div id="AnswerBodyDiv">
+                    <div id="AnswerContentDiv">
+                        <p textmode="MultiLine" id="AnswerContent">@ans.Contents</p>
+                    </div>
+                    <div class="VoteDiv">
+                        <p id="ScoreBox_@ans.AnswerID" class="scoreP">@ans.GetScore() swag</p>
+                        @if (Model.isLoggedIn())
+                        {
+                            <input type="image" class="upvote AnswerVoteButton" src="/Images/upvote.png" onclick="VoteAnswer(@ans.AnswerID, 1); return false;">
+                            <input type="image" class="downvote AnswerVoteButton" src="/Images/downvote.png" onclick="VoteAnswer(@ans.AnswerID,0); return false;">
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.isLoggedIn())
+        {
+            <div id="AnswerInputFrame" >
+                <div id="username_div">
+                    <input asp-for="QuestionID" hidden="hidden" />
+                    <label asp-for="AnswerText" class="form-label">Do you know the answer? Help others and submit it now</label>
+                    <!--<input asp-for="AnswerText" maxlength="900" id="answerInput" class="input_txt" />-->
+                    <textarea id="answerInput" class="form-control mb-2" rows="7" name="@Html.NameFor(m => m.AnswerText)">@Model.AnswerText</textarea>
+                    <span asp-validation-for="AnswerText" class="text-danger"></span>
+                </div>
+                <input type="submit" class="InlineButton" />
+            </div>
+        }
+    </div>
+</form>

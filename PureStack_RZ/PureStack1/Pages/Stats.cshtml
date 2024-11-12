@@ -1,0 +1,86 @@
+﻿@page
+@model PureStack1.Pages.StatsModel
+@{
+    ViewData["Title"] = "Stats page";
+    string[] leaderboardStrings = Model.GetLeaderboardStrings();
+    string answeredQuestions = Model.GetAnsweredQuestionsString();
+}
+
+@section Stylesheets
+{
+    <link href="~/css/Stats.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('topContributorChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: @Html.Raw(leaderboardStrings[0]),
+                datasets: [{
+                    label: 'Leaders',
+                    backgroundColor: 'rgb(150, 50, 150)',
+                    borderColor: 'rgb(255, 199, 132)',                    
+                    data: @leaderboardStrings[1]
+                }]
+            },
+            options: {                   
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Leaderboard'
+                },
+                scales: {
+                
+                    xAxes: [{
+                        ticks: {
+                            min: 0,
+                            beginAtZero:true,
+                            stepSize: 1
+                        }
+                    }]
+                }
+            }
+        });
+        Chart.defaults.global.defaultFontColor = 'rgb(225,225,225)';
+
+        var ctx1 = document.getElementById('answeredChart').getContext('2d');
+        var chart1 = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Answered questions', 'Unanswered questions'],
+                datasets: [{
+                    label: 'Answered vs. Unanswered',
+                    backgroundColor: ['blue', 'green'],
+                    borderColor: 'rgb(255, 255, 255)',
+                    data: @answeredQuestions
+                }]
+            },
+            options: {
+                legend: {
+                    position: 'right'
+                },
+                title: {
+                    display: true,
+                    text: 'Answered VS Un-Answered'
+                }
+                
+            }
+        });
+    </script>
+}
+<h1>Statistics</h1>
+<div id="mainDiv">
+    
+    <div id="leaderboardDiv">
+        <canvas id="topContributorChart"></canvas>
+    </div>
+    <div id="answeredDiv">
+        <canvas id="answeredChart"></canvas>
+    </div>
+</div>

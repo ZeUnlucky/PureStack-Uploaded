@@ -1,0 +1,85 @@
+﻿@page
+@model PureStack1.Pages.ShowQuestionsModel
+@{
+}
+
+@section Stylesheets
+{
+    <link href="~/css/QuestionsPage.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function Vote(qid, isGood) {
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "Actions?handler=VoteQuestion&qid=" + qid + "&isGood=" + isGood, false);
+                xhr.send();
+                var votes = xhr.responseText;
+                if (votes == null) {
+                    window.location = "Login";
+                    return false;
+                }
+                var scoreBox = document.getElementById("ScoreBox_" + qid);
+                scoreBox.innerText = votes + " swag";
+            }
+            catch (e) {
+                alert(e);
+            }
+        }
+    </script>
+}
+
+<div id="MainDiv">
+    @foreach (var q in Model.Questions)
+    {
+    <div class="bigdiv">
+        <div class="questionDiv">
+            <div class="usDiv">
+                <img class="pfp" src="@q.User.GetPicturePath()">
+                <a class="nameP" href="Profile?uid=@q.User.UserID">@q.User.Username</a>
+                <p class="scoreP2">@q.GetScore() swag points</p>
+            </div>
+            <div class="qsDIV">
+                <a class="questionHD" href="ViewQuestion?qid=@q.QuestionID">@q.Header</a>
+                <p class="parBody">@q.Contents</p>
+            </div>
+            
+            <div class="vtDiv">
+                @if (Model.isLoggedIn())
+                {
+                    <input type="image" name="ctl16" class="VoteButton" src="~/Images/upvote.png" onclick="Vote(@q.QuestionID,1); return false;">
+                }
+                    <p id="ScoreBox_@q.QuestionID" class="scoreP">@q.GetScore() swag</p>
+                    @if (Model.isLoggedIn())
+                    {
+                        <input type="image" name="ctl17" class="VoteButton" src="~/Images/downvote.png" onclick="Vote(@q.QuestionID,0); return false;">
+                    }
+                </div>
+             
+        </div>
+        <div class="statusDiv">
+            <p class="parDate">Posted at @q.Date</p>
+            <p class="parAns">@q.NumAnswers have answered!</p>
+        </div>
+    </div>
+    }
+<div class="pgDiv">
+    @if (Model.PageNum != 1)
+    {
+        <input type="image" class="ArrowButton pgButton" src="~/Images/backward_arrow.png" onclick="location.href = 'ShowQuestions?p=@(Model.PageNum-1)'">
+        <input type="submit" value="@(Model.PageNum-1)" class="pgButton" onclick="location.href = 'ShowQuestions?p=@(Model.PageNum-1)'">
+    }
+    <input type="submit" value="@Model.PageNum" class="pgButton currentPage">
+    @if (!Model.LastPage)
+    {
+        <input type="submit" value="@(Model.PageNum+1)" class="pgButton" onclick="location.href = 'ShowQuestions?p=@(Model.PageNum+1)'">
+        <input type="image" class="ArrowButton pgButton" src="~/Images/forward_arrow.png" onclick="location.href = 'ShowQuestions?p=@(Model.PageNum+1)'">
+    }
+
+
+
+
+</div>
+</div>

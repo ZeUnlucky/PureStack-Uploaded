@@ -1,0 +1,57 @@
+﻿.container {
+    display: flex;
+    flex-direction: row;
+}
+
+#login_img {
+    width: 300px;
+    padding-right: 40px;
+    padding-top: 50px;
+}
+
+#welcome_h1 {
+    text-align: center;
+    font-size: 16pt;
+}
+
+.input_div {
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    margin: 1%;
+}
+.form-label {
+}
+
+.InlineButton {
+    background-color: rgb(100,100,100);
+    border: 0;
+    border-radius: 16px;
+    margin-left: 7px;
+    margin-top: 15px;
+    width: 75px;
+    height: 25px;
+    padding: 0px 6px 8px 10px;
+    background-color: deepskyblue;
+    color: black;
+}
+
+    .InlineButton:hover {
+        background-color: cadetblue;
+    }
+
+#mainDiv {
+}
+
+
+.input_header {
+    text-align: left;
+}
+
+.input_txt {
+    width: 100%;
+}
+
+#error_text {
+    color: red;
+}

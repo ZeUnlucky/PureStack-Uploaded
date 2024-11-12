@@ -1,0 +1,52 @@
+﻿
+#topContainer{
+    display:flex;
+    width:50%;
+    justify-content:space-between;
+    height:100px;
+}
+
+#pfpContainer{
+    height:100px;
+}
+#pfp{
+    height:100px;
+}
+#userDetailsContainer {
+    font-size: 48px;
+    font-weight: bold;
+}
+#scoreContainer {
+    font-size: 48px;
+}
+
+
+#bottomContainer {
+    display: flex;
+    margin-top: 20px;
+}
+
+#LatestQuestionsTable{
+    width:100%;
+}
+
+.CenterText{
+    text-align:center;
+}
+
+
+table, th, td{
+    border:1px solid lightgray;
+}
+#userLatestContainer{
+    width:50%;
+}
+
+#statsContainer{
+    height:200px;
+    margin-top:40px;
+    margin-left:50px;
+}
+#statsChart{
+    height:200px;
+}

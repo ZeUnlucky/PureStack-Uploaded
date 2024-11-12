@@ -1,0 +1,46 @@
+﻿.container {
+    display: flex;
+    flex-direction: row;
+}
+
+#login_img {
+    width: 300px;
+    padding-right: 40px;
+    padding-top: 50px;
+}
+
+#welcome {
+    text-align: center;
+    font-size: 14pt;
+}
+
+.input_div {
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    margin: 1%;
+}
+
+.form-label {
+}
+
+
+#mainDiv {
+}
+
+
+.input_header {
+    text-align: left;
+}
+
+.input_txt {
+    width: 100%;
+}
+
+#error_text {
+    color: red;
+}
+
+#qInput {
+    width:70%;
+}

@@ -1,0 +1,34 @@
+﻿@page
+@model PureStack1.Pages.AddQuestionModel
+@{
+}
+
+@section Stylesheets
+{
+    <link href="~/css/AddQuestion.css" rel="stylesheet" />
+}
+
+<form method="post">
+    <div class="container">
+        <div id="image_div">
+            <img id="login_img" src="~/Images/AddQuestion.svg" />
+        </div>
+        <div id="mainDiv">
+            <h4 id="welcome">Fantastic, you want to contribute a question! This is super-easy and help is on the way answering it</h4>
+            <!--<div asp-validation-summary="All" class="text-danger"></div>-->
+            <div id="qheader_div" class="input_div">
+                <label asp-for="QuestionHeader" class="form-label">What is your question?</label>
+                <input asp-for="QuestionHeader" maxlength="45" class="input_txt" />
+                <span asp-validation-for="QuestionHeader" class="text-danger"></span>
+            </div>
+
+            <div id="qcontent_div" class="input_div">
+                <label asp-for="QuestionContent" class="form-label">Any more details?</label>
+                
+                <textarea id="qInput" class="form-control mb-2" rows="7" name="@Html.NameFor(m => m.QuestionContent)">@Model.QuestionContent</textarea>
+                <span asp-validation-for="QuestionContent" class="text-danger"></span>
+            </div>
+            <input type="submit" class="InlineButton" value="Submit your question" />
+        </div>
+    </div>
+</form>

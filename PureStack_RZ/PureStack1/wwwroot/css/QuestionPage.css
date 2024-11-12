@@ -1,0 +1,109 @@
+﻿#QuestionFrame {
+    display: flex;
+    justify-content: space-between;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(50,50,50);
+    border-bottom-style: solid;
+}
+
+#AnswersFrame{
+    display:flex;
+    flex-direction:column;
+}
+
+#BigAnswer {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(50,50,50);
+    border-bottom-style: solid;
+}
+
+.UserDiv {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 3px 3px 3px 3px;
+}
+
+.pfp {
+    width: 50px;
+    height: 50px;
+}
+
+.nameP {
+    width: 100%;
+    height: 25%;
+    text-align: left;
+}
+
+.scoreP2 {
+    width: 100%;
+    height: 25%;
+    text-align: left;
+    font-size: 75%;
+}
+
+.VoteDiv {
+    display: flex;
+}
+
+.scoreP {
+    margin-right: 8px;
+}
+
+#ActionsBlock {
+    width: 100px;
+    float: right;
+    
+}
+#VoteBlock {
+    border-width: 1px;
+    border-color: lightgrey;
+    border-style: solid;
+    align-items: center;
+    flex-direction: column;
+    padding:5px;
+    display: flex;
+}
+#QuestionScore {
+    margin-bottom: 0px;
+}
+.VoteButton {
+    width: 16px;
+    height: 16px;
+}
+
+#DeleteBlock {
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.DeleteButton {
+    margin-top: 5px;
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color:rgb(100,50,50);
+    
+}
+.AnswerVoteButton {
+    margin-top: 5px;
+    width: 16px;
+    height: 16px;
+}
+#ContentBlock {
+    padding-right: 150px;
+    width: 80%;
+}
+
+#AnswerInputFrame {
+    margin-top: 20px;
+}
+
+#answerInput {
+    width: 50%;
+}
